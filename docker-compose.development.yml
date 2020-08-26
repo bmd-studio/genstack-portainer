@@ -1,0 +1,7 @@
+version: '3.7'
+
+services:
+  portainer:
+    ports:
+      - ${PORTAINER_UI_PORT}
+      - ${PORTAINER_API_PORT}   

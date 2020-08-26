@@ -1,0 +1,27 @@
+version: '3.7'
+
+services:
+  portainer:
+    image: ${DOCKER_IMAGE}
+    restart: ${DOCKER_RESTART_POLICY}    
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - data:/data
+    ports:
+      - ${PORTAINER_UI_PORT}
+    networks:
+      - backend
+    logging:
+      driver: ${DOCKER_LOGGING_DRIVER}
+      options:
+        max-file: ${DOCKER_LOGGING_MAX_FILE}
+        max-size: ${DOCKER_LOGGING_MAX_SIZE}
+
+networks:
+  backend:
+    name: ${APP_PREFIX}_${DOCKER_BACKEND_NETWORK_NAME}
+
+volumes:
+  data:
+    name: ${PORTAINER_VOLUME_NAME}
+    driver: local      
