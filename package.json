@@ -1,7 +1,8 @@
 {
+  "name": "@bmd-studio/genstack-container-portainer",
   "private": true,
   "scripts": {
     "dc": "docker-compose --env-file=./env/defaults -f docker-compose.yml --compatibility",
     "dc:dev": "yarn dc -f docker-compose.development.yml"
-  },
+  }
 }
