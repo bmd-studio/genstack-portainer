@@ -2,6 +2,7 @@ version: '3.7'
 
 services:
   portainer:
+    container_name: ${COMPOSE_PROJECT_NAME}_${SERVICE_NAME}
     image: ${DOCKER_IMAGE}
     restart: ${DOCKER_RESTART_POLICY}    
     volumes:
@@ -10,7 +11,9 @@ services:
     ports:
       - ${PORTAINER_UI_PORT}
     networks:
-      - backend
+      backend:
+        aliases: 
+          - ${SERVICE_NAME}
     logging:
       driver: ${DOCKER_LOGGING_DRIVER}
       options:
