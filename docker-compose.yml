@@ -2,9 +2,15 @@ version: '3.7'
 
 services:
   portainer:
-    container_name: ${COMPOSE_PROJECT_NAME}_${SERVICE_NAME}
-    image: ${DOCKER_IMAGE}
-    restart: ${DOCKER_RESTART_POLICY}    
+    container_name: ${COMPOSE_PROJECT_NAME}_${SERVICE_NAME}_${GS_ENV}
+    image: ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION}-${GS_ENV}
+    restart: ${DOCKER_RESTART_POLICY}   
+    build:
+      context: ./
+      args:
+        - DOCKER_BASE_IMAGE   
+    env_file:
+      - ${DOCKER_GENERATED_ENV_FILE:-./env/defaults}             
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - data:/data
