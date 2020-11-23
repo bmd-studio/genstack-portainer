@@ -7,9 +7,6 @@ SERVICE_NAME=portainer
 PORTAINER_UI_PORT=9000
 PORTAINER_API_PORT=8000
 
-DOCKER_IMAGE_NAME=project/portainer
-DOCKER_IMAGE_TAG=1.0.0
-
 PORTAINER_VOLUME_NAME=portainer_data
 
 DOCKER_BASE_IMAGE=portainer/portainer-ce:2.0.0-alpine
