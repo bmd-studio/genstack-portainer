@@ -20,6 +20,9 @@ services:
       backend:
         aliases: 
           - ${SERVICE_NAME}
+      frontend:
+        aliases: 
+          - ${SERVICE_NAME}          
     logging:
       driver: ${DOCKER_LOGGING_DRIVER}
       options:
@@ -29,6 +32,10 @@ services:
 networks:
   backend:
     name: ${APP_PREFIX}_${DOCKER_BACKEND_NETWORK_NAME}
+    external: true
+  frontend:
+    name: ${DOCKER_FRONTEND_NETWORK_NAME}
+    external: true
 
 volumes:
   data:
