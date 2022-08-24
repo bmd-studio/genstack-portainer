@@ -1,6 +1,6 @@
 {
-  "name": "@bmd-studio/genstack-container-portainer",
-  "private": true,
+  "name": "@bmd-studio/genstack-portainer",
+  "version": "2.0.0",
   "scripts": {
     "setup": "yarn install",
     "start:docker": "yarn dc:dev up",
