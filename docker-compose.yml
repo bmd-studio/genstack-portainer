@@ -2,15 +2,15 @@ version: '3.7'
 
 services:
   portainer:
-    container_name: ${COMPOSE_PROJECT_NAME}_${SERVICE_NAME}_${GS_ENV}
-    image: ${DOCKER_IMAGE_REGISTRY:-}${APP_PREFIX}/${SERVICE_NAME}:${APP_VERSION}-${GS_ENV}
-    restart: ${DOCKER_RESTART_POLICY}   
+    container_name: ${COMPOSE_PROJECT_NAME}_${SERVICE_NAME}
+    image: ${DOCKER_IMAGE_REGISTRY:-}${APP_PREFIX}/${SERVICE_NAME}:${APP_VERSION}
+    restart: ${DOCKER_RESTART_POLICY}
     build:
       context: ./
       args:
-        - DOCKER_BASE_IMAGE   
+        - DOCKER_BASE_IMAGE
     env_file:
-      - ${DOCKER_GENERATED_ENV_FILE:-./env/defaults}             
+      - ${DOCKER_GENERATED_ENV_FILE:-./env/defaults}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - data:/data
@@ -18,11 +18,11 @@ services:
       - ${PORTAINER_UI_PORT}
     networks:
       backend:
-        aliases: 
+        aliases:
           - ${SERVICE_NAME}
       frontend:
-        aliases: 
-          - ${SERVICE_NAME}          
+        aliases:
+          - ${SERVICE_NAME}
     logging:
       driver: ${DOCKER_LOGGING_DRIVER}
       options:
@@ -40,4 +40,4 @@ networks:
 volumes:
   data:
     name: ${PORTAINER_VOLUME_NAME}
-    driver: local      
+    driver: local
